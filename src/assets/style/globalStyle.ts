@@ -1,3 +1,9 @@
+import {useFonts} from "expo-font";
+
+const AvatarImage = require("@/assets/img/profile/avatar.jpg");
+import {Image, StyleSheet} from 'react-native';
+
+
 const COLORS = {
   primary: '',
   secondary: '',
@@ -21,3 +27,26 @@ const SIZES = {
   small: 12,
   medium: 16
 }
+
+const icons = {
+  menu: '1',
+}
+
+
+export const images = {
+  profile: AvatarImage,
+}
+
+export const globalStyle = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    paddingHorizontal:10
+  },
+  userName: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 16
+  },
+
+})
