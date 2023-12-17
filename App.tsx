@@ -4,7 +4,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {ScreenHeaderBtn} from "@/common/components/ScreenHeaderBtn";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {SimpleLineIcons} from "@expo/vector-icons";
 import {images} from "@/assets/style/globalStyle";
 import {useFonts} from "expo-font";
 import {useCallback} from "react";
@@ -34,19 +34,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SafeAreaProvider onLayout={onLayoutRootView} style={{paddingHorizontal:10}}>
+      <SafeAreaProvider onLayout={onLayoutRootView}>
         <Stack.Navigator>
           <Stack.Screen name={'Home'} component={Home} options={{
             headerLeft: () => (
-              <ScreenHeaderBtn dimension={'70%'} handlePress={() => {
-              }}>
-                <MaterialCommunityIcons name="hamburger" size={24} color="black"/>
+              <ScreenHeaderBtn dimension={'70%'} handlePress={() => {}}>
+                <SimpleLineIcons name="menu" size={30} color="black" />
               </ScreenHeaderBtn>
-
             ),
             headerRight: () => (
-              <ScreenHeaderBtn dimension={'100%'} handlePress={() => {
-              }}>
+              <ScreenHeaderBtn dimension={'100%'} handlePress={() => {}}>
                 <Image source={images.profile} style={{width: 50, height: 50, borderRadius: 10}} resizeMode={'cover'}/>
               </ScreenHeaderBtn>
             ),
@@ -57,6 +54,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
