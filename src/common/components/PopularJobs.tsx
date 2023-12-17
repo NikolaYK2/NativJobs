@@ -30,7 +30,7 @@ export const PopularJobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            data={[1, 2, 3, 4]}
+            data={data}
             renderItem={({item}) => (
               <PopularJobsCard item={item}/>
             )}

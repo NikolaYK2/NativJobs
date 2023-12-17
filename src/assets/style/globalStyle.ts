@@ -4,12 +4,12 @@ const AvatarImage = require("@/assets/img/profile/avatar.jpg");
 import {Image, StyleSheet} from 'react-native';
 
 
-const COLORS = {
+export const COLORS = {
   primary: '',
   secondary: '',
   tertiary: '',
 
-  gray: '',
+  gray: 'grey',
   gray2: '',
 
   white: 'white',

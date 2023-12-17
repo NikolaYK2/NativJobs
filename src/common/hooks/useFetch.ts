@@ -4,6 +4,9 @@ import {RAPID_API_KEY} from "@env"
 
 const rapidApiKey = RAPID_API_KEY
 
+type P={
+
+}
 
 export const useFetch = (endpoint:string, query:any) => {
   const [data, setData] = useState([]);
