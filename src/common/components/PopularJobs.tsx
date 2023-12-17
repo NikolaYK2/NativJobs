@@ -2,12 +2,16 @@ import React from 'react';
 import {ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {FONT, globalStyle, SIZES} from "@/assets/style/globalStyle";
 import {PopularJobsCard} from "@/common/components/PopularJobsCard";
+import {useFetch} from "@/common/hooks/useFetch";
 
 
 export const PopularJobs = () => {
-  const isLoading = false;
-  const error = false;
 
+  const {isLoading, error, data, refetch} = useFetch('search', {
+    query: 'React developer',
+    numPages: 1,
+  })
+  console.log(data)
   return (
     <View style={globalStyle.container}>
       <View style={styles.header}>
@@ -26,12 +30,12 @@ export const PopularJobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            data={[1,2,3,4]}
-            renderItem={({item})=>(
+            data={[1, 2, 3, 4]}
+            renderItem={({item}) => (
               <PopularJobsCard item={item}/>
-          )}
-            keyExtractor={item => item?.job_id}
-            contentContainerStyle={{columnGap:10, padding:10}}
+            )}
+            // keyExtractor={item => item}
+            contentContainerStyle={{columnGap: 10, padding: 10}}
             horizontal
           />
         )}

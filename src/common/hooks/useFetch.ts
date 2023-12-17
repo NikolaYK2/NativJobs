@@ -1,12 +1,11 @@
 import {useEffect, useState} from "react";
-import * as process from "process";
 import axios from "axios";
+import {RAPID_API_KEY} from "@env"
 
-require('dotenv').config()
+const rapidApiKey = RAPID_API_KEY
 
-const rapidApiKey = process.env.RAPID_API_KEY
 
-export const useFetch = ({endpoint, query}: any) => {
+export const useFetch = (endpoint:string, query:any) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,8 +23,7 @@ export const useFetch = ({endpoint, query}: any) => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.request
-      (options);
+      const res = await axios.request(options);
 
       setData(res.data.data);
       setIsLoading(false)
