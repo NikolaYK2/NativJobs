@@ -16,13 +16,13 @@ const COLORS = {
   lightWhite: '',
 }
 
-const FONT = {
+export const FONT = {
   regular: 'Inter-Regular',
   medium: 'Inter-Medium',
   bold: 'Inter-Bold',
 }
 
-const SIZES = {
+export const SIZES = {
   xSmall: 10,
   small: 12,
   medium: 16
@@ -42,11 +42,7 @@ export const globalStyle = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
-    paddingHorizontal:10
+    paddingHorizontal:10,
+    marginVertical:10
   },
-  userName: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 16
-  },
-
 })

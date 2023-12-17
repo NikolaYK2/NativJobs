@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
-import {globalStyle} from "@/assets/style/globalStyle";
+import {FONT, globalStyle, SIZES} from "@/assets/style/globalStyle";
 import {AntDesign} from "@expo/vector-icons";
 
 
@@ -16,8 +16,8 @@ export const Welcome = ({navigation}:any) => {
   return (
     <View style={[globalStyle.container]}>
       <View>
-        <Text style={globalStyle.userName}>Hi Nikolaj</Text>
-        <Text style={styles.text}>Find your perfect job</Text>
+        <Text style={styles.text}>Hi Nikolaj</Text>
+        <Text style={[styles.text,{fontFamily: FONT.bold, fontSize: SIZES.medium}]}>Find your perfect job</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -42,7 +42,7 @@ export const Welcome = ({navigation}:any) => {
                 navigation.navigate(`/search/${item}`)
               }}
             >
-              <Text>{item}</Text>
+              <Text style={styles.text}>{item}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={item => item}
@@ -54,7 +54,7 @@ export const Welcome = ({navigation}:any) => {
 };
 
 const styles = StyleSheet.create({
-  text: {fontFamily: 'Inter-Regular', fontSize: 20},
+  text: {fontFamily: FONT.medium, fontSize: SIZES.small},
   inputContainer: {flexDirection: 'row', alignItems: 'center'},
   input: {
     flex: 1,
