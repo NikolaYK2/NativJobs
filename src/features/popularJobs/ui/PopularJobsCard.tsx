@@ -8,18 +8,18 @@ type Props = {
   item: any,
 }
 export const PopularJobsCard = ({item}: Props) => {
-const imageLogo = checkImageUrl(item.employer_logo) ? item.employer_logo : jobImageDefault
 
   return (
     <TouchableOpacity onPress={() => {
     }} style={styles.container}>
       <TouchableOpacity>
-        <Image source={{uri: imageLogo}} resizeMode={'contain'} style={styles.logoImage}/>
+        <Image source={checkImageUrl(item.employer_logo) ? {uri: item.employer_logo} : jobImageDefault}
+               resizeMode={'contain'} style={styles.logoImage}/>
       </TouchableOpacity>
-      <Text style={styles.text} numberOfLines={1}>{item.employer_name}</Text>
+      <Text style={[styles.text,{marginBottom:10}]} numberOfLines={1}>{item.employer_name}</Text>
       <View>
-        <Text numberOfLines={1}>{item.job_title}</Text>
-        <Text numberOfLines={1}>{item.job_country}</Text>
+        <Text style={{fontFamily:FONT.bold, fontSize:SIZES.medium}} numberOfLines={1}>{item.job_title}</Text>
+        <Text style={styles.text} numberOfLines={1}>{item.job_country}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     justifyContent: 'flex-start',
-    alignItems: "center",
-    width:140
+    alignItems: "stretch",
+    width: 140,
+    marginHorizontal: 5
   },
   logoImage: {
     width: 60,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: FONT.regular,
     fontSize: SIZES.small,
-    color: COLORS.gray
+    color: COLORS.gray,
   }
 })
 

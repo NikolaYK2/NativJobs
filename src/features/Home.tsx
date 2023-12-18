@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, View} from "react-native";
 import {Welcome} from "@/common/components/Welcome";
-import {PopularJobs} from "@/common/components/PopularJobs";
+import {PopularJobs} from "@/features/popularJobs/ui/PopularJobs";
 import {NearbyJobs} from "@/common/components/NearbyJobs";
 
 export const Home = () => {

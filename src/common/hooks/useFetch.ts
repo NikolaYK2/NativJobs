@@ -1,32 +1,16 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
-import {RAPID_API_KEY} from "@env"
+import {JobsType, searchJobApi} from "@/features/popularJobs/api/instance";
 
-const rapidApiKey = RAPID_API_KEY
-
-type P={
-
-}
 
 export const useFetch = (endpoint:string, query:any) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<JobsType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const options = {
-    method: 'GET',
-    url: `https://jsearch.p.rapidapi.com/${endpoint}`,
-    headers: {
-      'X-RapidAPI-Key': rapidApiKey,
-      'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-    },
-    params: {...query}
-  };
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.request(options);
+      const res =  await searchJobApi.SearchApi(query);
 
       setData(res.data.data);
       setIsLoading(false)
