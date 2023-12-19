@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {JobsType, searchJobApi} from "@/features/popularJobs/api/instance";
+import {JobsType, searchJobApi} from "@/features/search/api/instance";
 
 
 export const useFetch = (endpoint:string, query:any) => {

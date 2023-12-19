@@ -1,8 +1,9 @@
-import React from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {FONT, globalStyle, SIZES} from "@/assets/style/globalStyle";
-import {PopularJobsCard} from "@/features/popularJobs/ui/PopularJobsCard";
+import React, {useState} from 'react';
+import {ActivityIndicator, FlatList, Text, TouchableOpacity, View} from "react-native";
+import {globalStyle} from "@/assets/style/globalStyle";
+import {PopularJobsCard} from "@/features/search/ui/PopularJobsCard";
 import {useFetch} from "@/common/hooks/useFetch";
+import {stylesSearch} from "@/features/search/ui/styles";
 
 
 type DataType = {
@@ -16,11 +17,16 @@ export const PopularJobs = () => {
     page:1,
     num_pages: 1,
   })
-  console.log(data)
+
+  const [selectedJob, setSelectedJob] =useState();
+
+  const cardPressHandle=()=>{
+
+  }
   return (
     <View style={globalStyle.container}>
-      <View style={styles.header}>
-        <Text style={styles.text}>Popular jobs</Text>
+      <View style={stylesSearch.header}>
+        <Text style={stylesSearch.text}>Popular jobs</Text>
         <TouchableOpacity>
           <Text>
             Show all
@@ -37,7 +43,11 @@ export const PopularJobs = () => {
           <FlatList
             data={data as DataType[]}
             renderItem={({item}) => (
-              <PopularJobsCard item={item}/>
+              <PopularJobsCard
+                item={item}
+                selectedJob={selectedJob}
+                cardPress={cardPressHandle}
+              />
             )
             }
             keyExtractor={item => item.job_id}
@@ -50,16 +60,3 @@ export const PopularJobs = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  text: {
-    fontFamily: FONT.medium,
-    fontSize: SIZES.medium
-  },
-  cardsContainer: {}
-})
